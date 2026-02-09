@@ -1,5 +1,10 @@
 # Imbeddings Go SDK
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/enot-style/imbeddings-go-sdk.svg)](https://pkg.go.dev/github.com/enot-style/imbeddings-go-sdk)
+[![Go Report Card](https://goreportcard.com/badge/github.com/enot-style/imbeddings-go-sdk)](https://goreportcard.com/report/github.com/enot-style/imbeddings-go-sdk)
+[![License](https://img.shields.io/github/license/enot-style/imbeddings-go-sdk)](LICENSE)
+
+
 A lightweight, idiomatic Go client for accessing the [Imbeddings API](https://github.com/enot-style/imbeddings) — an image-embeddings service that produces dense vector embeddings from images (URLs, base64/data URIs). Typical use cases include building vector search, similarity ranking, RAG pipelines, or AI-powered image analysis workflows.
 
 ## Install
