@@ -1,11 +1,11 @@
 # Imbeddings Go SDK
 
-Minimal Go client for the Imbeddings image-embeddings service (ViT-based models like DINOv3/DINOv2). It sends images as URLs or base64/data URIs and returns a single embedding per image.
+A lightweight, idiomatic Go client for accessing the [Imbeddings API](https://github.com/enot-style/imbeddings) — an image-embeddings service that produces dense vector embeddings from images (URLs, base64/data URIs). Typical use cases include building vector search, similarity ranking, RAG pipelines, or AI-powered image analysis workflows.
 
 ## Install
 
 ```bash
-go get github.com/kotylevskiy/imbeddings-go-sdk
+go get github.com/enot-style/imbeddings-go-sdk
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ import (
     "log"
     "net/http"
 
-    imbeddings "github.com/kotylevskiy/imbeddings-go-sdk"
+    imbeddings "github.com/enot-style/imbeddings-go-sdk"
 )
 
 func main() {
