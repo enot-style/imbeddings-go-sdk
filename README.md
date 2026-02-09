@@ -1,6 +1,6 @@
 # Imbeddings Go SDK
 
-Minimal Go client for the Imbeddings image-embeddings service (ViT-based models like DINOv3/DINOv2). It sends images as URLs or base64-encoded data and returns CLS and MEAN embeddings.
+Minimal Go client for the Imbeddings image-embeddings service (ViT-based models like DINOv3/DINOv2). It sends images as URLs or base64/data URIs and returns a single embedding per image.
 
 ## Install
 
@@ -38,20 +38,28 @@ func main() {
         log.Fatal(err)
     }
 
-    log.Printf("mean dims: %d, cls dims: %d", len(vectors[0].Mean), len(vectors[0].Cls))
+    log.Printf("dims: %d", len(vectors[0].Vector))
 }
 ```
 
 ## Notes
 
 - Endpoint: `POST /v1/embeddings`
-- Inputs: image URL or base64-encoded image data
-- Outputs: CLS and MEAN embeddings (float arrays)
+- Inputs: image URL, data URI, or base64-encoded image data
+- Outputs: a single embedding per image (float array or base64 string)
 - The server must already be running and accessible.
+
+Use `ImageBase64(...)` if you already have base64/data URI content.
+
+You can also pass raw strings via `ImbeddingsParams.Inputs` if you don't need helpers.
+
+## Options
+
+`ImbeddingsParams` supports:
+- `EncodingFormat`: `"float"` (default) or `"base64"`
+- `Dimensions`: optional truncation size
+- `User`: forwarded to the API for parity
 
 ## Configuration
 
-If you want to align with environment-based configuration, the SDK exposes a helper struct:
-
-- `ImbeddingsServiceOptions` (env vars: `IMBEDDINGS_BASE_URL`, `IMBEDDINGS_MODEL_ID`, `IMBEDDINGS_MAX_WIDTH`, `IMBEDDINGS_MAX_HEIGHT`)
-
+Use `client.SetAPIKey(...)` if the service is configured with API keys.
